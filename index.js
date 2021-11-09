@@ -29,39 +29,38 @@ async function downloadImage(url, filepath) {
     }
 }
 
-async function scrape(reps){
-    for (var i = 1; i < reps + 1; i++) {
+async function scrape(startFrom=1, endAt){
+    for (var i = startFrom; i < reps + 1; i++) {
       var url = ('https://seraphoftheendmanga.com/manga/seraph-of-the-end-vampire-reign-chapter-' + i)
-      console.log('Downloading: ' + url)
+      console.log('[INFO] Downloading: ' + url)
       var dir = './scraped/chapter' + i
       if (!fs.existsSync(dir)) {
-        console.log('Directory doesnt exist! making new directory...')
+        console.log('[WARN] Directory doesnt exist! making new directory...')
         fs.mkdirSync(dir);
     }
-      await got(url, options).then(response => {
+      got(url, options).then(response => {
         const dom = new JSDOM(response.body);
         var document = dom.window.document;
-        var p = document.getElementsByTagName('p')
+        var img = document.getElementsByTagName('img')
         var srcs = []
-        for (var z = 0; z < p.length; z++) {
-            var h = p[z].lastChild
-            var src = h.src
-            if (!String(src).startsWith('https://seraph')) {
-                srcs.push(src)
-            }
+        for (var z = 0; z < img.length; z++) {
+          if (img[z].src.startsWith('https://cdn.hatsub.com/')) {
+            srcs.push(img[z].src)
+          }
         }
+        console.log(srcs)
         var x = 0
         srcs.forEach(image => {
-            downloadImage(image, './scraped/chapter' + i + '/image' + x + '.jpg')
+            downloadImage(image, './scraped/chapter' + i + '/image'+ x + '.jpg')
             x++;
         })
       }).catch(err => {
         console.log(err);
       });
-      console.log('[' + i + '] Chapters scraped')
-      var wait = 20000 + Math.floor(Math.random() * 2000)
+      console.log('[INFO] ' + i + ' Chapters scraped')
+      var wait = 5000 // adjust to your network speeds 
       await sleep(wait)
     }
   }
-  
-scrape(107)
+
+scrape(108, 108)
