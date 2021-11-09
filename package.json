@@ -1,0 +1,29 @@
+{
+  "name": "sussy-scraper",
+  "version": "1.0.0",
+  "description": "amogus imposter scraper!!!!!!!!!!!!!!!!!!!!!!!",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "got": "^11.8.2",
+    "image-downloader": "^4.0.3",
+    "jsdom": "^18.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonymousomeone/sussy-scraper.git"
+  },
+  "keywords": [
+    "😩"
+  ],
+  "author": "zalandr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anonymousomeone/sussy-scraper/issues"
+  },
+  "homepage": "https://github.com/anonymousomeone/sussy-scraper#readme"
+}
