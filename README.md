@@ -3,7 +3,7 @@ amoguasgaomsogausmgoausgmaosgumasogumasgsaog
 
 # to use:
 
-1. npm i fs got jsdom image-downloader
+1. npm i
 
 2. node index.js
 
